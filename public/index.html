@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Maison Rouge — Fine Dining</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <nav class="nav">
+      <span class="nav-logo">La Maison Rouge</span>
+      <div class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#order-section">Order</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <p class="hero-sub">Est. 1998 · Kolkata</p>
+      <h1 class="hero-title">Where Every<br/><em>Plate Tells</em><br/>a Story</h1>
+      <a href="#menu" class="hero-btn">Explore the Menu</a>
+    </div>
+    <div class="scroll-hint">↓ Scroll</div>
+  </header>
+
+  <!-- GUEST INFO BANNER -->
+  <section class="guest-bar" id="order-section">
+    <div class="container">
+      <h2 class="section-label">Begin Your Order</h2>
+      <div class="guest-form">
+        <div class="input-group">
+          <label>Your Name</label>
+          <input type="text" id="guestName" placeholder="e.g. Arjun Sharma" />
+        </div>
+        <div class="input-group">
+          <label>Table Number</label>
+          <input type="number" id="tableNumber" placeholder="e.g. 7" min="1" max="50"/>
+        </div>
+        <button class="btn-confirm" onclick="confirmGuest()">Confirm & Browse Menu ↓</button>
+      </div>
+      <p class="guest-status" id="guestStatus"></p>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="menu-header">
+        <h2>Tonight's Menu</h2>
+        <p>Crafted fresh, served with love</p>
+      </div>
+
+      <!-- CATEGORY TABS -->
+      <div class="tabs">
+        <button class="tab active" onclick="filterMenu('all', this)">All</button>
+        <button class="tab" onclick="filterMenu('starter', this)">Starters</button>
+        <button class="tab" onclick="filterMenu('main', this)">Mains</button>
+        <button class="tab" onclick="filterMenu('dessert', this)">Desserts</button>
+        <button class="tab" onclick="filterMenu('drinks', this)">Drinks</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid"></div>
+    </div>
+  </section>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-toggle" id="cartToggle" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
+  </div>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+  <aside class="cart" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button onclick="toggleCart()" class="cart-close">✕</button>
+    </div>
+    <div class="cart-guest-info" id="cartGuestInfo">
+      <span>Please fill in your name & table first</span>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your cart is empty</p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        Total: <strong id="cartTotal">₹0</strong>
+      </div>
+      <div class="cart-note-wrap">
+        <label>Special Instructions</label>
+        <textarea id="orderNote" placeholder="Allergies, preferences, etc."></textarea>
+      </div>
+      <button class="btn-order" onclick="placeOrder()">Place Order →</button>
+    </div>
+  </aside>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon">✓</div>
+      <h3>Order Placed!</h3>
+      <p id="modalText">Your order is being prepared by our kitchen.</p>
+      <button onclick="closeModal()" class="btn-confirm">Back to Menu</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>La Maison Rouge © 2025 · Fine Dining Experience · Kolkata</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
